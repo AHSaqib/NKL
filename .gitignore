@@ -1,0 +1,30 @@
+# Build outputs (not needed in repo)
+*.dll
+*.exe
+*.msi
+*.cab
+*.bak
+*.log
+
+# Temporary/backup files
+*.tmp
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Visual Studio / KLC generated files (if applicable)
+*.obj
+*.pdb
+*.idb
+*.ilk
+*.aps
+*.pch
+*.res
+*.suo
+*.ncb
+*.user
+*.sln.docstates
+
+# Installer packaging
+build/
+dist/
