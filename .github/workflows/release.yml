@@ -1,0 +1,50 @@
+name: Build and Release NKL
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'   # Example: v1.0.0
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build KLC Layout
+        run: |
+          echo "Building KLC layout..."
+          # Assuming you have .klc files in src/
+          # Replace this with your actual KLC build commands
+          dir src
+          mkdir build
+          copy src\\*.klc build\\
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nkl-build
+          path: build/*
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nkl-build
+          path: ./build
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
