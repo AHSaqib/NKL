@@ -18,8 +18,8 @@ Most existing layouts require complex key combinations for Arabic diacritics (Ha
   * `Shift+a` → Shadda (ّ)
 * Reduced reliance on Shift for common letters:
 
-  * `d` → د (Dal)
-  * `Shift+d` → ذ (Dhal)
+  * `k` → د (Dal)
+  * `Shift+k` → ذ (Dhal)
 * Bangla layout uses standard Unicode characters with a few custom shortcuts.
 
 ---
